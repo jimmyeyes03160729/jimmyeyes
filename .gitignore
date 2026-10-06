@@ -1,0 +1,12 @@
+node_modules/
+dist/
+coverage/
+private-data.json
+private-data-*.json
+*.private.json
+.env
+.env.*
+secrets/
+credentials/
+*.log
+.DS_Store

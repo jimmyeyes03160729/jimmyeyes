@@ -1,0 +1,155 @@
+{
+  "meta": { "schemaVersion": 1, "updatedAt": "2025-01-01", "title": "Example placeholder only — replace with your own local data" },
+  "owner": { "displayName": "Example Owner", "email": "owner@example.invalid" },
+  "infrastructure": {
+    "systems": [
+      { "name": "Production VM", "status": "IN DEVELOPMENT", "description": "Placeholder runtime notes", "notes": "Replace locally; no real address included." },
+      { "name": "NAS", "status": "RESEARCH", "description": "Placeholder private storage system" },
+      { "name": "GitHub", "status": "ACTIVE", "description": "Source control and static site hosting" }
+    ],
+    "diagram": [
+      { "id": "github", "label": "GitHub", "description": "Source code · version control · Pages", "status": "ACTIVE", "children": [{ "id": "github-source", "label": "Source Code" }, { "id": "github-version", "label": "Version Control" }, { "id": "github-pages", "label": "GitHub Pages" }, { "id": "github-ci", "label": "CI Tests" }] },
+      { "id": "nas", "label": "NAS", "description": "Repository · backup · operator tools", "status": "RESEARCH", "children": [{ "id": "nas-repo", "label": "EasyStock Repository" }, { "id": "nas-backup", "label": "Backup" }, { "id": "nas-tailscale", "label": "Tailscale" }, { "id": "nas-scheduler", "label": "Scheduler" }, { "id": "nas-codex", "label": "Codex" }, { "id": "nas-antigravity", "label": "Antigravity" }, { "id": "nas-ttyd", "label": "ttyd" }, { "id": "nas-tmux", "label": "tmux" }] },
+      { "id": "vm", "label": "Production VM", "description": "Runtime · scheduled jobs · data collection", "status": "IN DEVELOPMENT", "children": [{ "id": "vm-runtime", "label": "EasyStock Runtime" }, { "id": "vm-scheduled", "label": "Scheduled jobs" }, { "id": "vm-market", "label": "Market collection" }, { "id": "vm-intraday", "label": "Intraday Scanner" }, { "id": "vm-research", "label": "Research" }, { "id": "vm-paper", "label": "Paper Trading" }, { "id": "vm-bots", "label": "LINE · Telegram · Bots" }] }
+    ],
+    "notes": "Illustrative data only."
+  },
+  "nasAIEnvironment": {
+    "workflow": [
+      { "id": "browser", "label": "Browser", "description": "Operator browser session." },
+      { "id": "ttyd", "label": "ttyd", "description": "Web terminal entry point; configure its local-only address privately." },
+      { "id": "shell", "label": "NAS shell", "description": "Shell session on the private NAS." },
+      { "id": "tmux", "label": "tmux", "description": "Persistent terminal sessions." },
+      { "id": "agents", "label": "Codex / Antigravity", "description": "Separate named AI terminal sessions." },
+      { "id": "repository", "label": "EasyStock Repository", "description": "Repository mounted into the selected environment." }
+    ],
+    "notes": "Illustrative topology only. This app does not connect to or query the NAS."
+  },
+  "connections": [
+    { "name": "NAS LAN", "type": "SSH", "host": "nas.example.invalid", "port": 22, "username": "<username>", "command": "ssh <username>@<host>", "description": "Replace with a local-only connection note.", "status": "PLANNED" },
+    { "name": "NAS Tailscale", "type": "SSH", "host": "<private-hostname>", "port": 22, "username": "<username>", "command": "ssh <username>@<private-hostname>", "description": "Placeholder hostname only; no private network address included.", "status": "PLANNED" },
+    { "name": "NAS SSH", "type": "SSH", "host": "nas.example.invalid", "port": 22, "username": "<username>", "command": "ssh -p <port> <username>@<host>", "description": "Template command using placeholders.", "status": "PLANNED" },
+    { "name": "NAS ttyd", "type": "WEB", "url": "https://terminal.example.invalid", "description": "Placeholder URL — not a real service.", "status": "PLANNED" },
+    { "name": "NAS Codex", "type": "TERMINAL", "command": "tmux attach -t codex", "description": "Example session attach command.", "status": "PLANNED" },
+    { "name": "NAS Antigravity", "type": "TERMINAL", "command": "tmux attach -t antigravity", "description": "Example session attach command.", "status": "PLANNED" },
+    { "name": "Production VM", "type": "SSH", "host": "vm.example.invalid", "port": 22, "username": "<username>", "command": "ssh <username>@<host>", "description": "Example command using placeholders only.", "status": "PLANNED" },
+    { "name": "GitHub Repo", "type": "GIT", "url": "https://github.com/example/easystock-placeholder", "description": "Replace with repository link if appropriate.", "status": "PLANNED" },
+    { "name": "EasyStock Web", "type": "WEB", "url": "https://app.example.invalid", "description": "Reserved example domain only.", "status": "PLANNED" },
+    { "name": "Chrome Extension", "type": "BROWSER", "url": "chrome-extension://<extension-id>", "description": "Placeholder extension ID.", "status": "PLANNED" }
+  ],
+  "services": [
+    { "name": "Production VM", "status": "IN DEVELOPMENT", "description": "Runtime placeholder" },
+    { "name": "NAS", "status": "RESEARCH", "description": "Private storage placeholder" },
+    { "name": "GitHub", "status": "ACTIVE", "description": "Source and version control" },
+    { "name": "Dashboard", "status": "IN DEVELOPMENT", "description": "Operations UI" },
+    { "name": "Firebase", "status": "PLANNED", "description": "Google authentication gate" },
+    { "name": "Codex", "status": "RESEARCH", "description": "Local operator environment" },
+    { "name": "Antigravity", "status": "RESEARCH", "description": "Local operator environment" },
+    { "name": "Tailscale", "status": "PLANNED", "description": "Private networking notes" },
+    { "name": "Backup", "status": "PLANNED", "description": "Backup inventory" },
+    { "name": "Paper Trading", "status": "RESEARCH", "description": "Simulation and accounting" },
+    { "name": "Research", "status": "RESEARCH", "description": "Model and dataset governance" }
+  ],
+  "docker": [
+    { "name": "easystock-codex", "ramLimit": "Not recorded", "role": "AI coding environment", "persistent": true, "repoMount": "<local repository path>", "status": "RESEARCH" },
+    { "name": "easystock-antigravity", "ramLimit": "Not recorded", "role": "AI research environment", "persistent": true, "repoMount": "<local repository path>", "status": "RESEARCH" },
+    { "name": "easystock-tailscale", "ramLimit": "Not recorded", "role": "Private network service", "persistent": true, "status": "PLANNED" },
+    { "name": "easystock-scheduler", "ramLimit": "Not recorded", "role": "Scheduled tasks", "persistent": true, "status": "PLANNED" }
+  ],
+  "apis": [
+    { "name": "Shioaji / Sinopac", "category": "交易", "purpose": "Market data and broker integration notes", "production": false, "marketData": true, "trading": false, "historicalData": false, "realtime": false, "limits": "Not recorded", "status": "RESEARCH", "notes": "Capability flags are examples; verify account and API permissions locally." },
+    { "name": "Esun Market Data", "category": "行情", "purpose": "Market data research", "production": false, "marketData": true, "trading": false, "historicalData": false, "realtime": false, "status": "RESEARCH" },
+    { "name": "TWSE", "category": "行情", "purpose": "Exchange data reference", "production": false, "marketData": true, "trading": false, "historicalData": true, "realtime": false, "status": "RESEARCH" },
+    { "name": "TPEx", "category": "行情", "purpose": "Exchange data reference", "production": false, "marketData": true, "trading": false, "historicalData": true, "realtime": false, "status": "RESEARCH" },
+    { "name": "Yahoo", "category": "研究", "purpose": "Research reference data", "production": false, "marketData": true, "trading": false, "historicalData": true, "realtime": false, "status": "RESEARCH" },
+    { "name": "Fugle", "category": "行情", "purpose": "Market data source evaluation", "production": false, "marketData": true, "trading": false, "historicalData": false, "realtime": false, "status": "PLANNED" },
+    { "name": "Firebase", "category": "平台", "purpose": "Google authentication UI gate", "production": false, "marketData": false, "trading": false, "historicalData": false, "realtime": false, "status": "PLANNED" },
+    { "name": "Other source", "category": "研究", "purpose": "Future API inventory placeholder", "production": false, "marketData": false, "trading": false, "historicalData": false, "realtime": false, "status": "PLANNED" }
+  ],
+  "architecture": {
+    "nodes": [
+      { "id": "market-data", "label": "Market Data Layer", "description": "Normalize market, breadth, sector, stock and historical inputs." },
+      { "id": "features", "label": "Intraday Features", "description": "Feature generation and dataset versions." },
+      { "id": "ai-risk", "label": "AI / Rules / Risk", "description": "Model scores plus explicit risk gates." },
+      { "id": "outputs", "label": "Dashboard / Chrome / LINE / Telegram", "description": "Delivery destinations; configure locally." }
+    ],
+    "dataFlow": [
+      { "id": "market-apis", "label": "Market APIs", "description": "External market data and broker integrations, recorded separately." },
+      { "id": "market-data", "label": "Market Data Layer", "description": "Normalize incoming market sources." },
+      { "id": "market-regime", "label": "Market Regime", "description": "Market regime features and state." },
+      { "id": "breadth", "label": "Breadth", "description": "Market breadth inputs." },
+      { "id": "sector", "label": "Sector", "description": "Sector-level market data." },
+      { "id": "stocks", "label": "Stocks", "description": "Stock universe and symbol records." },
+      { "id": "historical", "label": "Historical Data", "description": "Historical ticks, bars and daily references." },
+      { "id": "features", "label": "Intraday Features", "description": "Versioned feature computation." },
+      { "id": "models", "label": "AI / Rules / Risk", "description": "Research models remain separate from production." },
+      { "id": "daytrade", "label": "Daytrade", "description": "Intraday decision workflow." },
+      { "id": "rebound", "label": "Rebound", "description": "Rebound strategy research workflow." },
+      { "id": "research", "label": "Research", "description": "Dataset and validation workflow." },
+      { "id": "paper", "label": "Paper Trading", "description": "Simulation and accounting." },
+      { "id": "outputs", "label": "Dashboard / Chrome / LINE / Telegram", "description": "User-facing outputs." }
+    ],
+    "notes": "Example flow; replace with your own system architecture."
+  },
+  "intraday": {
+    "status": "RESEARCH_ONLY", "features": ["11-feature/model feature placeholder"], "knownIssues": ["Example: premarket freshness validation not recorded"], "currentValidation": ["Add validation dates and sample coverage locally"], "researchFindings": []
+  },
+  "marketRisk": {
+    "architecture": "Market regime and veto notes placeholder", "riskFactors": ["VWAP", "Short Low", "Breadth", "Sector"], "hardVeto": [], "softVeto": [], "marketRegime": "Not recorded", "premarket": "Stale/missing checks not recorded", "knownIssues": ["Example placeholder: add current validation issues"], "history": [], "changeLog": []
+  },
+  "paperTrading": {
+    "dailyMaxBuyAmount": "Not recorded", "used": "Not recorded", "remaining": "Not recorded", "sellReplenishesBuyAllowance": false, "pnl": "Not recorded", "longTermCumulativeNetPnl": "Not recorded", "tradeHistory": [], "accountingRules": ["SELL does not replenish same-day BUY allowance"], "knownIssues": [], "pendingFixes": []
+  },
+  "reboundAI": {
+    "status": "RESEARCH_ONLY", "dataset": "Not recorded", "schema": "Not recorded", "features": [], "dateRange": "Not recorded", "stocks": 0, "labels": [], "trainableSamples": 0, "baseline": "Not recorded", "candidateModel": "Not recorded", "productionStatus": "RESEARCH_ONLY", "stages": ["PASSED", "PENDING", "NEAR_MISS", "REJECTED_CONTROL"]
+  },
+  "historicalLearning": {
+    "datasets": [], "coverage": "Not recorded", "dateRange": "Not recorded", "symbolCount": 0, "sampleCount": 0, "featureVersion": "Not recorded", "labelVersion": "Not recorded", "modelVersion": "Not recorded", "researchResult": "Not recorded", "validation": ["Historical Tick", "1m Kbar", "Daily reference", "Feature reconstruction", "IS", "OOS", "Walk Forward", "Robustness", "Overfitting Check"]
+  },
+  "research": {
+    "promotionStates": ["RESEARCH_ONLY", "PAPER_ALLOWED", "REAL_MARKET_VALIDATION", "PRODUCTION_ELIGIBLE", "PRODUCTION", "REJECTED"], "policy": ["Research model is never presented as production by default", "Require OOS, walk-forward and robustness review"], "evaluations": [], "decisions": []
+  },
+  "chromeExtension": {
+    "currentVersion": "Not recorded", "nextVersion": "Not recorded", "products": ["Chrome Extension", "當沖吧！牛馬仔"], "timeline": [], "knownIssues": [], "roadmap": []
+  },
+  "backup": [
+    { "source": "VM", "destination": "NAS placeholder", "schedule": "Not recorded", "lastSuccess": "Not recorded", "retention": "Not recorded", "dataCategory": "Application data", "restoreCommand": "<document restore steps locally; never put credentials here>", "notes": "No credential backup procedure included." },
+    { "source": "Learning Data", "destination": "NAS placeholder", "schedule": "Not recorded", "lastSuccess": "Not recorded", "retention": "Not recorded", "dataCategory": "Research datasets", "notes": "" },
+    { "source": "SQLite", "destination": "NAS placeholder", "schedule": "Not recorded", "lastSuccess": "Not recorded", "retention": "Not recorded", "dataCategory": "Database", "notes": "" },
+    { "source": "Historical Data", "destination": "NAS placeholder", "schedule": "Not recorded", "lastSuccess": "Not recorded", "retention": "Not recorded", "dataCategory": "Market history", "notes": "" },
+    { "source": "Research Data", "destination": "NAS placeholder", "schedule": "Not recorded", "lastSuccess": "Not recorded", "retention": "Not recorded", "dataCategory": "Datasets and evaluation results", "notes": "" },
+    { "source": "Config", "destination": "NAS placeholder", "schedule": "Not recorded", "lastSuccess": "Not recorded", "retention": "Not recorded", "dataCategory": "Non-secret configuration inventory", "notes": "Never record credentials or plaintext secrets." }
+  ],
+  "currentWork": [
+    { "title": "建立私人知識庫基礎", "area": "Ops Center", "priority": "P1", "status": "DOING", "description": "先在本機整理結構與私人 JSON。", "created": "2025-01-01", "updated": "2025-01-01", "dependency": "Firebase Web app setup", "notes": "Example item; replace locally." },
+    { "title": "驗證資料來源與交易能力", "area": "Data Sources", "priority": "P2", "status": "NEXT", "description": "確認行情權限與交易權限分開記錄。" },
+    { "title": "整理歷史資料覆蓋率", "area": "Historical Learning", "priority": "P2", "status": "BACKLOG", "description": "補上 date range、symbol 與 sample inventory。" },
+    { "title": "記錄連線安全基線", "area": "Infrastructure", "priority": "P1", "status": "BLOCKED", "description": "只記錄必要連線指引，不記錄密碼或金鑰。", "dependency": "Local review" },
+    { "title": "確認範例 schema", "area": "Ops Center", "priority": "P3", "status": "DONE", "description": "Placeholder JSON schema ready." }
+  ],
+  "roadmap": [
+    { "title": "Firebase Google UI gate", "area": "Security", "lane": "Now", "description": "Allowed account email gate." },
+    { "title": "Import and local persistence", "area": "Data", "lane": "Next", "description": "Private JSON via IndexedDB." },
+    { "title": "Operations inventory", "area": "Infrastructure", "lane": "Later", "description": "Fill in system relationships locally." },
+    { "title": "Historical robustness review", "area": "Research", "lane": "Research", "description": "Track OOS and walk-forward results." },
+    { "title": "Create independent workspace", "area": "Ops Center", "lane": "Done", "description": "Static app baseline." }
+  ],
+  "commands": [
+    { "title": "SSH example", "category": "NAS", "command": "ssh <username>@<host>", "description": "Replace placeholders from your private notes.", "danger": "SAFE" },
+    { "title": "Attach to Codex tmux", "category": "tmux", "command": "tmux attach -t codex", "description": "Attach to a named session.", "danger": "SAFE" },
+    { "title": "Attach to Antigravity tmux", "category": "tmux", "command": "tmux attach -t antigravity", "description": "Attach to a named session.", "danger": "SAFE" },
+    { "title": "VM SSH template", "category": "VM", "command": "ssh <username>@<host>", "description": "Placeholder connection template only.", "danger": "SAFE" },
+    { "title": "Example read-only status", "category": "Git", "command": "git status --short", "description": "Inspect working tree status.", "danger": "READ_ONLY" },
+    { "title": "Codex workspace", "category": "Codex", "command": "tmux attach -t codex", "description": "Example local session command.", "danger": "SAFE" },
+    { "title": "Antigravity workspace", "category": "Antigravity", "command": "tmux attach -t antigravity", "description": "Example local session command.", "danger": "SAFE" },
+    { "title": "Backup inventory placeholder", "category": "Backup", "command": "<document a non-secret backup command locally>", "description": "Never place credential values in command records.", "danger": "WRITE" },
+    { "title": "EasyStock runtime status", "category": "EasyStock Runtime", "command": "<add a read-only runtime status command locally>", "description": "Placeholder only; command not executable.", "danger": "READ_ONLY" },
+    { "title": "Example destructive command", "category": "Docker", "command": "<REPLACE LOCALLY — DO NOT RUN THIS PLACEHOLDER>", "description": "Example red warning presentation; not an executable command.", "danger": "DELETE" }
+  ],
+  "changelog": [
+    { "date": "2025-01-01", "title": "Ops Center example initialized", "description": "Replace this fake example entry with your own local record.", "area": "Ops Center", "version": "0.1.0", "commit": "example-placeholder", "status": "EXAMPLE" }
+  ],
+  "notes": [
+    { "title": "Local-only reminder", "content": "This file is fake example data. Import your own private JSON in the browser. Never put secrets in this repository.", "area": "Security", "updated": "2025-01-01" }
+  ]
+}
